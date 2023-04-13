@@ -1,18 +1,20 @@
 import DropDownList from "./DropDownList";
-
-const itemList = [
-  'Profile Information',
-  'Change Password',
-  'Become PRO',
-  'Help',
-  'Log Out',
-];
+import React, { useState } from 'react';
 
 export default function DropDown() {
+  const itemList = [
+    'Profile Information',
+    'Change Password',
+    'Become PRO',
+    'Help',
+    'Log Out',
+  ];
+  const [opened, setOpened] = useState('');
+
   return (
     <div className="container">
-      <div data-id="wrapper" className="dropdown-wrapper open">
-        <button data-id="toggle" className="btn" onClick={toggleOpen}>
+      <div data-id="wrapper" className={"dropdown-wrapper" + opened}>
+        <button data-id="toggle" className="btn" onClick={() => opened ? setOpened('') : setOpened(' open')}>
           <span>Account Settings</span>
           <i className="material-icons">public</i>
         </button>
@@ -22,8 +24,4 @@ export default function DropDown() {
       </div>
     </div>
   );
-}
-
-function toggleOpen() {
-  console.log('button pressed');
 }
